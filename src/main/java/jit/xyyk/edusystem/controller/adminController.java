@@ -12,7 +12,7 @@ public class adminController {
     }
 
 
-    //显示课程管理界面
+    //显示课程界面
     @RequestMapping("/admin/course")
     public String showCourse(){
         return "admin/course";

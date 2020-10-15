@@ -1,10 +1,207 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}">
+    <script th:src="@{/layui/layui.all.js}"></script>
+    <script th:src="@{/layui/layui.js}"></script>
+
+    <script th:src="@{/js/jquery-1.8.3.js}"></script>
 </head>
 <body>
+<table id="demo" lay-filter="LAY-table-test"></table>
     这是课程管理界面
+
+<script>
+    //课程管理表
+    /*layui.use('table', function(){
+        var table = layui.table;
+
+        //table实例化
+        table.render({
+            elem: '#demo'
+            ,height: 500
+            ,url: '' //数据接口
+            ,page: true//是否分页
+            ,title:"课程管理表"
+            ,method:'post'
+            //分页逻辑
+            ,parseData: function(res){ //将原始数据解析成 table 组件所规定的数据，res为从url中get到的数据
+                var result;
+                console.log(this);
+                console.log(JSON.stringify(res));
+                if(this.page.curr){
+                    result = res.data.slice(this.limit*(this.page.curr-1),this.limit*this.page.curr);
+                    console.log("result:"+result);
+                    console.log("this.page.curr:"+this.page.curr);
+
+                }
+                else{
+                    result=res.data.slice(0,this.limit);
+                    console.log("result:"+result);
+                }
+                return {
+                    "code": res.code, //解析接口状态
+                    "msg": res.msg, //解析提示文本
+                    "count": res.count, //解析数据长度
+                    "data": result //解析数据列表
+                };
+            }
+            //表头
+            ,cols: [
+                [
+                {field: 'g_id', title: '商品ID', sort: true, fixed: 'left'},
+                {field: 'g_name', title: '商品名称', }
+                ,{field: 'g_price', title: '商品价格',  sort: true}
+                ,{field: 'g_store', title: '商品库存', }
+                ,{field: 'goodstype_id', title: '商品类型ID', }
+                ,{fixed: 'right', width:178, align:'left', toolbar: '#barDemo'}
+                ]
+
+            ]
+        });
+
+        //头工具栏事件
+        table.on('toolbar(LAY-table-test)', function(obj){
+            var checkStatus = table.checkStatus(obj.config.id);
+            var event = obj.event;
+            if(event === 'addGoods'){
+                /!*添加操作 先把表格置空*!/
+                $("#g_name").val("");
+                $("#g_price").val("");
+                $("#g_store").val("");
+                $("#g_id").val("");
+                $("#goodstype_id").val("");
+                $("#demo1").attr("src","");
+
+                $("#type").val("add");
+
+//                  打开表单
+                layer.open({
+                    type:1,
+                    title:"添加商品",
+                    area:['50%','60%'],
+                    btn:['确定','取消'],
+                    content: $('#updateGoodForm'),
+                    yes:function (index,layero) {
+                        var submitted = $('#submitBtn');
+                        submitted.click();
+                        layer.closeAll();
+                        $("#updateGoodForm").css('display','none');//隐藏表单
+                    }
+                    ,btn2: function(){
+                        layer.closeAll()
+                        $("#updateGoodForm").css('display','none');
+                    }
+                    ,cancel: function(){
+
+                        $("#updateGoodForm").css('display','none');
+                    }
+
+                });
+
+            }
+        });
+
+
+        table.on("tool(LAY-table-test)", function(obj){
+            //获取当前行数据
+            var data = obj.data;
+            //获取event对应的值
+            var event =obj.event;
+            //获取当前行的dom对象
+            var tr=obj.tr;
+
+
+            if(event === 'del'){
+                layer.confirm('真的删除行么', function(index){
+                    obj.del();
+                    $.ajax({
+                        url: "/main/delGoods",
+                        type: "POST",
+                        data:{"gid":data.g_id},
+                        dataType: "json",
+                    });
+                    layer.close(index);
+                });
+
+                /!*
+                                    //点击订购套餐按钮
+                                    expenses_id=data.EXPENSES_ID;
+                                    expenses_name = data.EXPENSES_NAME;
+                                    expenses_length = data.EXPENSES_LENGTH;
+                                    expenses_b_cost = data.EXPENSES_B_COST;
+                                    expenses_u_cost= data.EXPENSES_U_COST;
+
+                                    $.ajax({
+                                        url: "IndexServlet",
+                                        type: "POST",
+                                        data:{"expenses_id":data.EXPENSES_ID,"expenses_name":data.EXPENSES_NAME,"expenses_length":data.EXPENSES_LENGTH,"expenses_b_cost":data.EXPENSES_B_COST,"expenses_u_cost":data.EXPENSES_U_COST},
+                                        dataType: "json",
+                                    });
+                *!/
+            }
+            if(event === 'edit'){
+                //把数据传到隐藏的表单的中
+
+                $("#g_name").val(data.g_name);
+                $("#g_price").val(data.g_price);
+                $("#g_store").val(data.g_store);
+                $("#g_id").val(data.g_id);
+                $("#goodstype_id").val(data.goodstype_id);
+                $("#demo1").attr("src",data.g_picture);
+//
+                $("#type").val("edit");
+                $("#g_picture").val(data.g_picture);
+
+
+
+
+                //打开表单
+                layer.open({
+                    type:1,
+                    title:"更改商品",
+                    area:['50%','60%'],
+                    btn:['确定','取消'],
+                    content: $('#updateGoodForm'),
+                    yes:function (index,layero) {
+                        var submitted = $('#submitBtn');
+                        submitted.click();
+                        obj.update({
+                            g_name:$("#g_name").val(),
+                            g_price:$("#g_price").val(),
+                            g_store:$("#g_store").val(),
+                            goodstype_id:$("#goodstype_id").val()
+                        });
+                        layer.closeAll();
+                        $("#updateGoodForm").css('display','none');//隐藏表单
+                    }
+                    ,btn2: function(){
+                        layer.closeAll()
+                        $("#updateGoodForm").css('display','none');
+                    }
+                    ,cancel: function(){
+
+                        $("#updateGoodForm").css('display','none');
+                    }
+                });
+                //提交表单
+                /!* form.on('submit(goodsFormVerity)',function (data) {
+                     parent.layer.msg('操作成功',{
+                         icon:1,
+                         time:2000
+                     });
+                     layer.closeAll();
+
+                 })*!/
+
+            }
+
+        });
+
+
+    });*/
+</script>
 </body>
 </html>

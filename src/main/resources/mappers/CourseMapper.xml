@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="jit.xyyk.edusystem.repository.CourseRepository">
+
+    <select id="getInfo" parameterType="String" resultType="jit.xyyk.edusystem.bean.User">
+        SELECT * FROM tb_user WHERE user_email = #{email}
+    </select>
+
+    <select id="selectCourseType" resultType="CourseType">
+        SELECT * FROM tb_coursetype
+    </select>
+
+
+</mapper>
