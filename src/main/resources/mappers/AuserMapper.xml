@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="jit.xyyk.edusystem.repository.AdminRepository">
+
+    <select id="getInfo" parameterType="String" resultType="jit.xyyk.edusystem.bean.User">
+        SELECT * FROM tb_user WHERE user_email = #{email}
+    </select>
+
+    <select id="login" resultType="jit.xyyk.edusystem.bean.Auser" parameterType="jit.xyyk.edusystem.bean.Auser">
+        select * from tb_auser where AUSER_NAME=#{auser_name} AND AUSER_PASSWORD=#{auser_password}
+    </select>
+
+</mapper>

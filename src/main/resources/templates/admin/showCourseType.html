@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}">
+    <script th:src="@{/layui/layui.all.js}"></script>
+    <script src="https://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+
+    <table id="demo" lay-filter="LAY-table-test"></table>
+    <script type="text/html" id="barDemo">
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    </script>
+
+
+
+    <script>
+
+        //商品管理表
+        layui.use('table', function(){
+            var table = layui.table;
+
+            //第一个实例
+            table.render({
+                elem: '#demo'
+                ,height: 500
+                ,toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
+                ,url: '/edusystem/admin/getCourseTypeData' //数据接口
+                ,page: true
+                ,title:"商品管理表"
+                ,method:'post'
+
+                ,parseData: function(res){ //将原始数据解析成 table 组件所规定的数据，res为从url中get到的数据
+                    var result;
+                    console.log(this);
+                    console.log(JSON.stringify(res));
+                    if(this.page.curr){
+                        result = res.data.slice(this.limit*(this.page.curr-1),this.limit*this.page.curr);
+                        console.log("result:"+result);
+                        console.log("this.page.curr:"+this.page.curr);
+
+                    }
+                    else{
+                        result=res.data.slice(0,this.limit);
+                        console.log("result:"+result);
+                    }
+                    return {
+                        "code": res.code, //解析接口状态
+                        "msg": res.msg, //解析提示文本
+                        "count": res.count, //解析数据长度
+                        "data": result //解析数据列表
+                    };
+                }
+                //开启分页
+                ,cols: [
+                    [
+                        {field: 'coursetype_id', title: '种类ID', sort: true, fixed: 'left'},
+                        {field: 'coursetype_name', title: '种类名称', }
+                        ,{fixed: 'right', width:178, align:'left', toolbar: '#barDemo'}
+
+                    ]
+                ]
+            });
+
+
+
+
+            table.on("tool(LAY-table-test)", function(obj){
+                //获取当前行数据
+                var data = obj.data;
+                //获取event对应的值
+                var event =obj.event;
+                //获取当前行的dom对象
+                var tr=obj.tr;
+
+                if(event === 'del'){
+                    layer.confirm('真的删除行么', function(index){
+                        obj.del();
+                        $.ajax({
+                            url: "/main/delGoods",
+                            type: "POST",
+                            data:{"gid":data.g_id},
+                            dataType: "json",
+                        });
+                        layer.close(index);
+                    });
+                }
+
+            });
+
+
+        });
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="jit.xyyk.edusystem.repository.CourseTypeRepository">
+
+    <insert id="addCourseType" parameterType="jit.xyyk.edusystem.bean.CourseType">
+        insert into tb_coursetype (coursetype_id, coursetype_name, coursetype_status) values (null, #{coursetype_name} ,'1')
+    </insert>
+
+    <select id="getCourseTypeByName" resultType="CourseType" parameterType="String">
+        select * from tb_coursetype where coursetype_name = #{coursetype_name}
+    </select>
+
+    <select id="getAllCourseType"  resultType="CourseType" >
+        select * from tb_coursetype
+    </select>
+
+</mapper>

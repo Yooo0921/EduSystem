@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>EduSystem后台登录</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <!-- load css -->
+    <link rel="stylesheet" type="text/css" th:href="@{/layui/css/layui.css}" media="all">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/adminlogin.css}" media="all">
+</head>
+<body>
+<div class="layui-canvs"></div>
+<div class="layui-layout layui-layout-login">
+    <form th:action="@{/admin/login}" th:object="${auser}" method="post">
+    <h1>
+        <strong>教育网站后台管理系统</strong>
+        <em>EduSystem</em>
+    </h1>
+    <div class="layui-user-icon larry-login">
+        <input type="text"  placeholder="账号" id="auser_name" class="login_txtbx" th:field="*{auser_name}"/>
+    </div>
+    <div class="layui-pwd-icon larry-login">
+        <input type="password" placeholder="密码" id="auser_password" class="login_txtbx" th:field="*{auser_password}"/>
+    </div>
+
+    <div class="layui-submit larry-login">
+        <input type="button" value="立即登陆" class="submit_btn" onclick="gogo()"/>
+    </div>
+    <div class="layui-login-text">
+        <p th:text="${msg}"></p>
+        <p>© 2020-2021 XY & YYK 版权所有</p>
+        <!--<p>苏xxxxxx</p>-->
+    </div>
+    </form>
+</div>
+
+<script type="text/javascript" th:src="@{/layui/layui.all.js}"></script>
+<script type="text/javascript" th:src="@{/js/adminlogin.js}"></script>
+<script type="text/javascript" th:src="@{/js/jparticle.jquery.js}"></script>
+<script type="text/javascript">
+    $(function(){
+        $(".layui-canvs").jParticle({
+            background: "#141414",
+            color: "#E6E6E6"
+        });
+
+    });
+
+    function gogo() {
+        var auser_name = document.getElementById("auser_name").value;
+        var auser_password = document.getElementById("auser_password").value;
+        if (auser_name == ""){
+            alert("管理员账号不能为空！");
+            auser_name.focus();
+            return false;
+        }
+        if (auser_password == ""){
+            alert("管理员密码不能为空！");
+            auser_password.focus();
+            return false;
+        }
+        // console.log(auser_name + "+++" +auser_password);
+        document.forms[0].submit();
+        return true;
+    }
+
+
+</script>
+</body>
+</html>
