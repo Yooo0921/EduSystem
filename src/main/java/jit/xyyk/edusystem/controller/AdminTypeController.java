@@ -1,5 +1,6 @@
 package jit.xyyk.edusystem.controller;
 
+import jit.xyyk.edusystem.bean.CourseType;
 import jit.xyyk.edusystem.service.CourseTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

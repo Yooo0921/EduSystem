@@ -1,5 +1,6 @@
 package jit.xyyk.edusystem.service;
 
+import jit.xyyk.edusystem.bean.CourseType;
 import org.springframework.ui.Model;
 
 public interface CourseTypeService {

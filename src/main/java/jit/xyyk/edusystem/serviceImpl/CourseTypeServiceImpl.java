@@ -1,5 +1,6 @@
 package jit.xyyk.edusystem.serviceImpl;
 
+import jit.xyyk.edusystem.bean.CourseType;
 import jit.xyyk.edusystem.repository.CourseTypeRepository;
 import jit.xyyk.edusystem.service.CourseTypeService;
 import net.sf.json.JSONArray;
