@@ -10,6 +10,7 @@
 <body>
 
     <table id="demo" lay-filter="LAY-table-test"></table>
+    <p id="msg" th:text="${msg}"></p>
     <script type="text/html" id="barDemo">
         <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
     </script>
@@ -67,6 +68,29 @@
 
 
 
+            // table.on("tool(LAY-table-test)", function(obj){
+            //     //获取当前行数据
+            //     var data = obj.data;
+            //     //获取event对应的值
+            //     var event =obj.event;
+            //     //获取当前行的dom对象
+            //     var tr=obj.tr;
+            //
+            //     if(event === 'del'){
+            //         layer.confirm('真的删除了么?', function(index){
+            //             obj.del();
+            //             $.ajax({
+            //                 url: "/edusystem/admin/delCourseType",
+            //                 type: "POST",
+            //                 data:{"coursetype_id":data.coursetype_id},
+            //                 dataType: "json",
+            //             });
+            //             layer.close(index);
+            //         });
+            //     }
+            //
+            // });
+
             table.on("tool(LAY-table-test)", function(obj){
                 //获取当前行数据
                 var data = obj.data;
@@ -76,14 +100,29 @@
                 var tr=obj.tr;
 
                 if(event === 'del'){
-                    layer.confirm('真的删除行么', function(index){
-                        obj.del();
+                    layer.confirm('真的删除了么?', function(index){
                         $.ajax({
-                            url: "/main/delGoods",
+                            url: "/edusystem/admin/delCourseType",
                             type: "POST",
-                            data:{"gid":data.g_id},
+                            data:{"coursetype_id":data.coursetype_id},
                             dataType: "json",
+                            success:function (respdata) {
+                                if (respdata){
+                                    // $('#msg').val(respdata.msg);
+                                    console.log(respdata);
+                                    if (respdata.flag=='1'){
+                                        obj.del();
+                                        alert("删除成功！");
+                                    }else {
+                                        alert("该类别有关联！删除失败！");
+
+                                    }
+                                }else {
+                                    alert("Ajax错误！!");
+                                }
+                            }
                         });
+
                         layer.close(index);
                     });
                 }

@@ -32,10 +32,6 @@ public class AdminController extends  BaseController{
         return "admin/course";
     }
 
-//    @RequestMapping("/admin/addCourseType")
-//    public String addCourseType(@ModelAttribute CourseType courseType,Model model){
-//        return courseTypeService.addCourseType(courseType, model);
-//    }
 
 
 }

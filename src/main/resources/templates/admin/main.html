@@ -54,7 +54,13 @@
                 <li class="layui-nav-item">
                     <a href="javascript:;">用户管理</a>
                 </li>
-                <li class="layui-nav-item"><a href="">类别管理</a></li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a href="javascript:;">类别管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a class="title" th:href="@{/admin/showCourseType}">查看课程类别</a></dd>
+                        <dd><a class="title" th:href="@{/admin/toaddCourseType}">添加课程类别</a></dd>
+                    </dl>
+                </li>
                 <li class="layui-nav-item"><a href="">发布商品</a></li>
             </ul>
 
@@ -77,6 +83,10 @@
 </div>
 <script>
 
+    layui.use('element', function(){
+        var element = layui.element;
+
+    });
 
     $(document).ready(function(){
         $("a.title").click(function (e) {

@@ -11,7 +11,17 @@
     </select>
 
     <select id="getAllCourseType"  resultType="CourseType" >
-        select * from tb_coursetype
+        select * from tb_coursetype where coursetype_status = '1'
+    </select>
+
+    <!--实现逻辑删除-->
+    <update id="delCourseType" parameterType="int">
+        update tb_coursetype set coursetype_status = '0' where coursetype_id = #{arg0}
+    </update>
+
+
+    <select id="selectCourseByTypeId" parameterType="int" resultType="Course">
+        select * from tb_course where coursetype_id=#{arg0}
     </select>
 
 </mapper>

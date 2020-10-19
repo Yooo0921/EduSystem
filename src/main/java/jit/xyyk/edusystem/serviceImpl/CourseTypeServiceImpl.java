@@ -63,4 +63,15 @@ public class CourseTypeServiceImpl implements CourseTypeService {
         return courseTypesData;
 
     }
+
+    @Override
+    public int delCourseType(int coursetype_id) {
+
+        //删除时的判断 是否被用到
+        if (courseTypeRepository.selectCourseByTypeId(coursetype_id).size()>0){
+            return 0;
+        }
+
+        return courseTypeRepository.delCourseType(coursetype_id);
+    }
 }

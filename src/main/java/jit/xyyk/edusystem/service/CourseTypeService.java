@@ -13,4 +13,6 @@ public interface CourseTypeService {
 
     public String getCourseTypeData();
 
+    public int delCourseType(int coursetype_id);
+
 }
