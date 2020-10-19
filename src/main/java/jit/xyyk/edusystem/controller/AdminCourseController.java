@@ -1,6 +1,6 @@
 package jit.xyyk.edusystem.controller;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
+
 import jit.xyyk.edusystem.Util.KitFileUtil;
 import jit.xyyk.edusystem.bean.Course;
 import jit.xyyk.edusystem.bean.CourseType;
@@ -14,7 +14,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -23,11 +22,12 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Controller
-public class adminCourseController {
-    //显示添加课程界面
+public class AdminCourseController {
+
     @Autowired
     private CourseService courseService;
 
+    //显示添加课程界面
     @RequestMapping(value = "/admin/addcourse")
     public String showCourse(Model model){
         List<CourseType> courseTypes = courseService.selectCourseType();
@@ -38,10 +38,51 @@ public class adminCourseController {
     //添加课程的表单提交 获取课程信息 保存到数据库
     @RequestMapping(value = "/admin/savecourse")
     public String saveCourse(@ModelAttribute(value = "course") Course course){
+        if (courseService.addCourse(course)>0){
+
+            return "admin/course";
+        }else {
+            return "admin/addcourse";
+        }
 
 
-        return "admin/addcourse";
     }
+
+    //修改课程
+    @RequestMapping(value = "/admin/updatecourse")
+    public String updateCourse(@ModelAttribute(value = "course") Course course){
+
+        courseService.updateCourse(course);
+        return "admin/course";
+
+    }
+
+    //删除课程
+    @RequestMapping("/admin/delcourse")
+    public String delCourse(HttpServletRequest request){
+//        int course_id=0;
+//        if (request.getParameter("course_id") != null && !request.getParameter("course_id").equals("")){
+//            course_id = Integer.parseInt(request.getParameter("course_id"));
+//        }
+//
+//
+        int course_id = Integer.parseInt(request.getParameter("course_id"));
+        courseService.delCourse(course_id);
+
+        return "admin/course";
+
+
+    }
+
+    //显示课程信息
+    @ResponseBody
+    @RequestMapping(value = "/admin/showcourse",produces = {"application/json;charset=UTF-8"})
+    public String showCourseDetail(){
+
+
+        return courseService.showCourse();
+    }
+
 
     //图片上传
     @ResponseBody
@@ -62,7 +103,7 @@ public class adminCourseController {
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
                 dateStr = simpleDateFormat.format(date);
                 String filepath = "F:\\pic\\media\\" +uuid+"." + prefix;//真实路径
-                String result  =uuid+"." + prefix;//虚拟路径
+                String result  ="/edusystem/"+uuid+"." + prefix;//虚拟路径
                 /*D:\mycode\LayUiTest\src\main\resources\static\images\*/
                 File files=new File(filepath);
                 //打印查看上传路径
