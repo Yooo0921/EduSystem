@@ -1,0 +1,47 @@
+.reg{
+	width: 450px;
+	height: 450px;
+	margin-top: 0px;
+	margin-left: 400px;
+	border-style: double;
+}
+.topbg{
+	width: 100%;
+	height: 200px;
+	background: url(../images/welcome.png);
+	background-size: 100% 100%;
+}
+
+.formtitle{
+	font-size: 20px;
+	color: #000000;
+}
+div.reg form input.code{
+	width:150px;
+}
+div.reg form p.txtL{
+	text-align: left;
+}
+div.reg form p.txtL img{
+	width:97px;
+	height:37px;
+	vertical-align: middle;
+	margin-left: 20px;
+}
+div.reg form p.txtL a{
+	color:#ff0000;
+}
+.reg input[type="button"],.login input[type="submit"]{
+	width:280px;
+	background: #C10000;
+	font-size: 20px;
+	border:none;
+	color:#ffffff;
+}
+
+#bottom{
+	margin-right: 10px;
+	text-align: right;
+	font-size: 15px;
+}
+

@@ -14,7 +14,7 @@ public class testController {
 
     @RequestMapping("/index")
     public String sayHello(){
-        return "admin/showCourseType";
+        return "index";
     }
 
 

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>用户注册</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/regist.css}"/>
+
+    <script  type="text/javascript" th:inline="javascript">
+        function refreshCode() {
+            document.getElementById("code").src = "/edusystem/validateCode?" + Math.random();
+        }
+
+
+        //表单验证
+        function checkForm() {
+            var user_pwd = document.registerForm.user_pwd.value;
+            var rebpwd = document.registerForm.rebpwd.value;
+            var email = document.registerForm.user_email.value;
+            var code = document.registerForm.code.value;
+
+            var pattern = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;
+
+            if (email == "") {
+                alert("邮箱不能为空！");
+                //email.focus();
+                return false;
+            } else if (!pattern.test(email)) {
+                alert("请输入正确的邮箱格式！");
+                //email.focus();
+                return false;
+            }
+
+
+            if ((user_pwd == "") || (rebpwd == "")) {
+                alert("密码和确认密码不能为空！");
+                return false;
+            } else if ((user_pwd.length < 6) || (user_pwd.length > 12)) {
+                alert("密码长度不符合要求，请输入6-12位密码!");
+                //user_pwd.focus();
+                return false;
+            } else if (user_pwd != rebpwd) {
+                alert("两次密码不一致！");
+                return false;
+            }
+
+            if (code == "") {
+                alert("请输入验证码！")
+                return false;
+            }
+            document.registerForm.submit();
+            return true;
+        }
+
+
+    </script>
+
+
+</head>
+<body th:background="@{/images/bg1.jpg}">
+
+    <div class="topbg"></div>
+
+    <div class="reg" >
+        <form th:action="@{/user/register}" method="post" th:object="${user}" name="registerForm" >
+            <table>
+
+                <p class="formtitle">用户注册</p>
+                *邮箱：
+                <p><input type="text" name="user_email" id="textfield" placeholder="请输入邮箱" th:field="*{user_email}"></p>
+                *密码：
+                <p><input type="password" name="user_pwd" id="textfield2" placeholder="请输入密码" th:field="*{user_pwd}"></p>
+                *确认密码：
+                <p><input type="password" name="rebpwd" id="textfield3" placeholder="请确认密码"></p>
+                *验证码：
+                <input type="text" name="code" id="textfield5"/>
+                <img id="code" th:src="@{/validateCode}"/>
+                <a href="javascript:refreshCode();" ><font color="blue">看不清，换一个！</font></a>
+                <br>
+                <p th:text="${codeError}"></p>
+                <p><input type="button" name="button" id="button" onclick="checkForm()" value="完成注册"></p>
+                <p class="txtL">完成此注册，即表明您同意了我们的
+                    <a href="#">
+                        <使用条款和隐私策略>
+                    </a></p>
+                <p id="bottom"><a href="#"><span></span>已有账号登录</a></p>
+            </table>
+        </form>
+    </div>
+
+</body>
+</html>

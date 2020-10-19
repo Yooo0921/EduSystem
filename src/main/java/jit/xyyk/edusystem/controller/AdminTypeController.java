@@ -60,7 +60,6 @@ public class AdminTypeController extends BaseController{
 
         String flag = "0";
 
-
         if(courseTypeService.delCourseType(coursetype_id)>0){
             flag = "1";
         }

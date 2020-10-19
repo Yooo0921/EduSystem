@@ -19,9 +19,6 @@ class EdusystemApplicationTests {
     @Test
     public void contextLoads() {
 //        UserBean userBean = userService.loginIn("a", "a");
-        User user = service.getInfo("a");
-        System.out.println("该用户ID为：");
-        System.out.println(user.getUser_email());
     }
 
 

@@ -2,8 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="jit.xyyk.edusystem.repository.UserRepository">
 
-    <select id="getInfo" parameterType="String" resultType="jit.xyyk.edusystem.bean.User">
-        SELECT * FROM tb_user WHERE user_email = #{email}
+    <insert id="register" parameterType="User">
+        insert into tb_user (user_id, user_email, user_pwd, user_status) values (null, #{user_email}, #{user_pwd}, '1')
+    </insert>
+
+    <select id="getUserByEmail" resultType="User" parameterType="String">
+        select * from tb_user where user_email = #{user_email}
     </select>
 
 </mapper>

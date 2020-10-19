@@ -14,7 +14,16 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public User getInfo(String email) {
-        return userRepository.getInfo(email);
+    public int register(User user) {
+
+        return userRepository.register(user);
+    }
+
+    @Override
+    public boolean ifExistUser(String user_email) {
+        if(userRepository.getUserByEmail(user_email) == null){
+            return true;
+        }
+        return false;
     }
 }
