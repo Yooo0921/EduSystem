@@ -1,16 +1,15 @@
-package jit.xyyk.edusystem.controller;
+package jit.xyyk.edusystem.controller.admin;
 
 
 import jit.xyyk.edusystem.Util.KitFileUtil;
 import jit.xyyk.edusystem.bean.Course;
 import jit.xyyk.edusystem.bean.CourseType;
-import jit.xyyk.edusystem.service.CourseService;
+import jit.xyyk.edusystem.service.admin.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

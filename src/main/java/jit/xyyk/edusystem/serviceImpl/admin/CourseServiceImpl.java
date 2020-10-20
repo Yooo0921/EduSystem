@@ -1,10 +1,10 @@
-package jit.xyyk.edusystem.serviceImpl;
+package jit.xyyk.edusystem.serviceImpl.admin;
 
 import jit.xyyk.edusystem.bean.Course;
 import jit.xyyk.edusystem.bean.CourseType;
-import jit.xyyk.edusystem.repository.CourseRepository;
-import jit.xyyk.edusystem.repository.FocusRepository;
-import jit.xyyk.edusystem.service.CourseService;
+import jit.xyyk.edusystem.repository.admin.CourseRepository;
+import jit.xyyk.edusystem.repository.admin.FocusRepository;
+import jit.xyyk.edusystem.service.admin.CourseService;
 import net.sf.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

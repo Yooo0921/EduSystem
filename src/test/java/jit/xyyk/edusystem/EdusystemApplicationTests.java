@@ -1,8 +1,6 @@
 package jit.xyyk.edusystem;
 
-import jit.xyyk.edusystem.bean.User;
-import jit.xyyk.edusystem.repository.UserRepository;
-import jit.xyyk.edusystem.service.UserService;
+import jit.xyyk.edusystem.service.before.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

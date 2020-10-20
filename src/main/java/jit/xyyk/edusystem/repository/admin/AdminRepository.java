@@ -1,4 +1,4 @@
-package jit.xyyk.edusystem.repository;
+package jit.xyyk.edusystem.repository.admin;
 
 import jit.xyyk.edusystem.bean.Auser;
 import org.apache.ibatis.annotations.Mapper;

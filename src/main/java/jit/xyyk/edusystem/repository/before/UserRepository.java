@@ -1,4 +1,4 @@
-package jit.xyyk.edusystem.repository;
+package jit.xyyk.edusystem.repository.before;
 
 import jit.xyyk.edusystem.bean.User;
 import org.apache.ibatis.annotations.Mapper;
@@ -17,7 +17,7 @@ public interface UserRepository {
 
 
     /**
-     * 通过用户邮箱查找用户是否
+     * 通过用户邮箱查找用户
      * @param user_email
      * @return
      */

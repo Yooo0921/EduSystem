@@ -1,8 +1,8 @@
-package jit.xyyk.edusystem.serviceImpl;
+package jit.xyyk.edusystem.serviceImpl.admin;
 
 import jit.xyyk.edusystem.bean.CourseType;
-import jit.xyyk.edusystem.repository.CourseTypeRepository;
-import jit.xyyk.edusystem.service.CourseTypeService;
+import jit.xyyk.edusystem.repository.admin.CourseTypeRepository;
+import jit.xyyk.edusystem.service.admin.CourseTypeService;
 import net.sf.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

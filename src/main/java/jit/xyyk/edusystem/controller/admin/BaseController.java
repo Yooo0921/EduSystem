@@ -1,4 +1,4 @@
-package jit.xyyk.edusystem.controller;
+package jit.xyyk.edusystem.controller.admin;
 
 import jit.xyyk.edusystem.exception.AdminLoginNoException;
 import org.springframework.web.bind.annotation.ModelAttribute;
