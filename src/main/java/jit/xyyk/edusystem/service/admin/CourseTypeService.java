@@ -1,4 +1,4 @@
-package jit.xyyk.edusystem.service;
+package jit.xyyk.edusystem.service.admin;
 
 import jit.xyyk.edusystem.bean.CourseType;
 import org.springframework.ui.Model;

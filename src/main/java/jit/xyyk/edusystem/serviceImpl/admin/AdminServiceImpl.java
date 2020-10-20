@@ -1,8 +1,8 @@
-package jit.xyyk.edusystem.serviceImpl;
+package jit.xyyk.edusystem.serviceImpl.admin;
 
 import jit.xyyk.edusystem.bean.Auser;
-import jit.xyyk.edusystem.repository.AdminRepository;
-import jit.xyyk.edusystem.service.AdminService;
+import jit.xyyk.edusystem.repository.admin.AdminRepository;
+import jit.xyyk.edusystem.service.admin.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;

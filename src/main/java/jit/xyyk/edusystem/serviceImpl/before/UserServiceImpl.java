@@ -1,8 +1,8 @@
-package jit.xyyk.edusystem.serviceImpl;
+package jit.xyyk.edusystem.serviceImpl.before;
 
 import jit.xyyk.edusystem.bean.User;
-import jit.xyyk.edusystem.repository.UserRepository;
-import jit.xyyk.edusystem.service.UserService;
+import jit.xyyk.edusystem.repository.before.UserRepository;
+import jit.xyyk.edusystem.service.before.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;

@@ -1,4 +1,4 @@
-package jit.xyyk.edusystem.service;
+package jit.xyyk.edusystem.service.before;
 
 import jit.xyyk.edusystem.bean.User;
 import org.springframework.ui.Model;

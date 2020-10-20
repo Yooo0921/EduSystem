@@ -1,7 +1,7 @@
-package jit.xyyk.edusystem.controller;
+package jit.xyyk.edusystem.controller.admin;
 
 import jit.xyyk.edusystem.bean.Auser;
-import jit.xyyk.edusystem.service.AdminService;
+import jit.xyyk.edusystem.service.admin.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
