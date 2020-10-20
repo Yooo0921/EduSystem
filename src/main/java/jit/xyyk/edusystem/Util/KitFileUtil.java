@@ -36,7 +36,7 @@ public class KitFileUtil {
                  extMap.put("file", "doc,docx,xls,xlsx,ppt,txt,zip,rar,gz,bz2");
 
                  //最大文件大小
-                 long maxSize = 9000000;
+                 long  maxSize = 1900000000;
 
                  response.setContentType("text/html; charset=UTF-8");
 
@@ -114,7 +114,7 @@ public class KitFileUtil {
 
 
 
-                                 url[i] = saveUrl + newFileName;
+                                 url[i] = "/edusystem/"+newFileName;
                  //                map.put("error", 0);
                  //                map.put("url", saveUrl + newFileName);
                  //                return map;

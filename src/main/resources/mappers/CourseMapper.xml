@@ -10,5 +10,24 @@
         SELECT * FROM tb_coursetype
     </select>
 
+    <insert id="addCourse" parameterType="Course">
+        INSERT INTO tb_course (course_name,course_detail,course_link,course_pic,coursetype_id) VALUE (#{course_name},#{course_detail},#{course_link},#{course_pic},#{coursetype_id})
+    </insert>
+
+    <select id="showCourse" resultType="Course">
+        SELECT course_id,course_name,course_detail,course_link,course_pic,coursetype_name FROM tb_course,tb_coursetype WHERE tb_coursetype.coursetype_id=tb_course.coursetype_id
+    </select>
+
+    <insert id="updateCourse" parameterType="Course">
+        UPDATE tb_course SET course_name=#{course_name},course_detail=#{course_detail},course_link=#{course_link},course_pic=#{course_pic},coursetype_id=#{coursetype_id} WHERE course_id=#{course_id}
+    </insert>
+
+    <delete id="delCourse" parameterType="int">
+        delete FROM tb_course WHERE course_id=#{arg0}
+    </delete>
+
+    <delete id="delFocus" parameterType="int">
+        delete FROM tb_focus WHERE course_id=#{arg0}
+    </delete>
 
 </mapper>
