@@ -40,10 +40,10 @@ public class UserServiceImpl implements UserService {
         }
         if (ruser != null) {
             session.setAttribute("user", ruser);
-            return "forward:/index";
+            return "/before/index";
         } else {
             model.addAttribute("msg", "用户名或密码错误！");
-            return "/login";
+            return "/before/login";
         }
     }
 }

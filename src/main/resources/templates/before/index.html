@@ -62,7 +62,7 @@
                         <a th:if="${session.user==null}" style="margin-left: 5px;" th:href="@{/user/toregister}">注册</a>
 
                         <a th:if="${session.user!=null}" style="border-right: 1px solid;padding-right: 10px;">[[${session.user.getUser_email()}]]</a>
-                        <a th:if="${session.user!=null}" style="margin-left: 5px;" th:href="@{/user/toregister}">注销</a>
+                        <a th:if="${session.user!=null}" style="margin-left: 5px;" th:href="@{/user/logout}">注销</a>
 
 
                     </p>

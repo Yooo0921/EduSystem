@@ -7,7 +7,7 @@
     </select>
 
     <select id="selectCourseType" resultType="CourseType">
-        SELECT * FROM tb_coursetype
+        SELECT * FROM tb_coursetype where coursetype_status = '1'
     </select>
 
     <insert id="addCourse" parameterType="Course">

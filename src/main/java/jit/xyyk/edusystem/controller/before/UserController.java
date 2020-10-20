@@ -20,7 +20,7 @@ public class UserController {
     public String toregister(Model model){
         model.addAttribute("user",new User());
         model.addAttribute("codeError","");
-        return "register";
+        return "before/register";
     }
 
     @RequestMapping("/user/register")
@@ -28,19 +28,19 @@ public class UserController {
 
         if (!userService.ifExistUser(user.getUser_email())) {
             model.addAttribute("codeError", "已存在用户！注册失败！");
-            return "register";
+            return "before/register";
         }
         if (!code.equalsIgnoreCase(session.getAttribute("code").toString())) {
             model.addAttribute("codeError", "验证码错误！");
-            return "register";
+            return "before/register";
         }
 
         if (userService.register(user) > 0) {
             //todo 修改
-            return "index";
+            return "before/login";
         }
         model.addAttribute("codeError", "注册失败！");
-        return "register";
+        return "before/register";
 
     }
 
@@ -48,12 +48,18 @@ public class UserController {
     public String tologin(Model model){
         model.addAttribute("user",new User());
         model.addAttribute("msg","");
-        return "login";
+        return "before/login";
     }
 
     @RequestMapping("/user/login")
     public String login(@ModelAttribute User user, Model model, HttpSession session){
         return userService.login(user, model, session);
+    }
+
+    @RequestMapping("/user/logout")
+    public String logout(HttpSession session){
+        session.invalidate();
+        return "/before/index";
     }
 
     //显示课程界面

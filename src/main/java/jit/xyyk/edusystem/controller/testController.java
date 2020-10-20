@@ -14,7 +14,7 @@ public class testController {
 
     @RequestMapping("/index")
     public String sayHello(){
-        return "index";
+        return "before/index";
     }
 
 
