@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="http://vjs.zencdn.net/5.0.2/video-js.css" rel="stylesheet">
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}"/>
+</head>
+<body style="padding-top: 70px; min-width: 700px">
+<div th:replace="before/top::html" ></div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8">
+            <!--视频介绍-->
+            <div class="panel panel-default" id="panel">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <img th:src="${course.course_pic}" class="img-responsive" style="width: 100%;">
+                        </div>
+                        <div class="col-sm-9">
+                            <h4>[[${course.course_name}]]</h4>
+                            <p>学科类型：[[${course.coursetype_name}]]</p>
+                            <!--<p>导演：王晶 关智耀 编剧：王晶</p>
+                            <p>类型：动作 犯罪</p>
+                            <p>语言：粤语 / 汉语普通话地区：香港 中国大陆片长：128 分</p>
+                            <p>年份：2017 又名：卧虎2 跛豪 Chasing the Dragon</p>-->
+                        </div>
+                    </div>
+                    <div>
+                        <h4>课程简介</h4>
+                        <p>[[${course.course_detail}]]</p>
+                    </div>
+                </div>
+            </div>
+            <!--视频播放器-->
+            <video id="video" class="video-js"  style="display: none;width: 750px" data-setup="{}">
+                <source th:src="${course.course_link}" type="video/mp4"></source>
+                <source src="myvideo.ogv" type="video/ogg"></source>
+                <source src="myvideo.webm" type="video/webm"></source>
+                <object width="" height="" type="application/x-shockwave-flash" data="myvideo.swf">
+                    <param name="movie" value="myvideo.swf" />
+                    <param name="flashvars" value="autostart=true&amp;file=myvideo.swf" />
+                </object> 当前浏览器不支持 video直接播放，点击这里下载视频：
+                <a href="myvideo.webm">下载视频</a>
+            </video>
+            <button class="btn btn-block btn-success btn-lg" onclick="show()">播放<span class="glyphicon glyphicon-expand"></span></button>
+            <script>
+                function show() {
+                    document.getElementById("panel").style.display = "none";
+                    document.getElementById("video").style.display = "block";
+                }
+            </script>
+        </div>
+        <div class="col-xs-4">
+            <div class="panel panel-default" style="border: 0;">
+                <div class="panel-body" style="border: 0;">
+                    <h3>相关</h3>
+                    <div class="row" th:each="course : ${courseList}">
+                        <div class="col-sm-5">
+                            <img th:src="${course.course_pic}" class="img-responsive">
+                        </div>
+                        <div class="col-sm-7">
+                            <p>[[${course.course_name}]]</p>
+                            <p>[[${course.coursetype_name}]]</p>
+                        </div>
+                        <hr>
+                    </div>
+                    <!--<hr>
+
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <img src="http://image.uczzd.cn/7603316629990825406.jpg" class="img-responsive">
+                        </div>
+                        <div class="col-sm-7">
+                            <p>捷豹C-X17概念车量产，颜值远超宝马X6，转…</p>
+                        </div>
+                    </div>
+                    <hr>
+
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <img src="http://image.uczzd.cn/7603316629990825406.jpg" class="img-responsive">
+                        </div>
+                        <div class="col-sm-7">
+                            <p>捷豹C-X17概念车量产，颜值远超宝马X6，转…</p>
+                        </div>
+                    </div>
+                    <hr>
+
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <img src="http://image.uczzd.cn/7603316629990825406.jpg" class="img-responsive">
+                        </div>
+                        <div class="col-sm-7">
+                            <p>捷豹C-X17概念车量产，颜值远超宝马X6，转…</p>
+                        </div>
+                    </div>
+                    <hr>-->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

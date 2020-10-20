@@ -8,4 +8,7 @@ public interface UserCourseService {
 
     public List<Course> getAllCourses();
 
+    public Course selCourse(int course_id);
+
+    public List<Course> getOtherCourse(int course_id);
 }
