@@ -56,4 +56,11 @@ public class UserController {
     public String login(@ModelAttribute User user, Model model, HttpSession session){
         return userService.login(user, model, session);
     }
+
+    //显示课程界面
+    @RequestMapping("/user/course")
+    public String showCourse(){
+
+        return "course";
+    }
 }
