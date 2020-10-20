@@ -10,4 +10,8 @@
         select * from tb_user where user_email = #{user_email}
     </select>
 
+    <select id="login" resultType="User" parameterType="User">
+        select * from tb_user where user_email = #{user_email} and user_pwd = #{user_pwd}
+    </select>
+
 </mapper>

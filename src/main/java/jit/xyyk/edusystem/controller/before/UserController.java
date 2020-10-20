@@ -44,4 +44,16 @@ public class UserController {
         return "register";
 
     }
+
+    @RequestMapping("/user/tologin")
+    public String tologin(Model model){
+        model.addAttribute("user",new User());
+        model.addAttribute("msg","");
+        return "login";
+    }
+
+    @RequestMapping("/user/login")
+    public String login(@ModelAttribute User user, Model model, HttpSession session){
+        return userService.login(user, model, session);
+    }
 }

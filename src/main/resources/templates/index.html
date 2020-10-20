@@ -36,7 +36,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="#">
-					<img id="thelogo" th:src="@{images/thelogo.png}" height="50px" />
+					<img id="thelogo" th:src="@{/images/thelogo.png}" height="50px" />
 				</a>
 				
 				
@@ -57,18 +57,27 @@
 				<!-- ------------登陆部分------------ -->
 				<div class="top_content_right">
 					<p class="p1">
-						<a style="border-right: 1px solid;padding-right: 10px;" href="login.html" id="login">登陆</a>
-						<a style="margin-left: 5px;" th:href="@{/user/toregister}">注册</a>
+                        <!--TODO-->
+                        <th:if="true">
+
+                            <a style="border-right: 1px solid;padding-right: 10px;" th:href="@{/user/tologin}" id="login">登陆</a>
+                            <a style="margin-left: 5px;" th:href="@{/user/toregister}">注册</a>
+                        </th:if>
+                        <th:unless>
+                            <a style="border-right: 1px solid;padding-right: 10px;"  ><a th:text="@{session.user.user_email}"></a></a>
+                            <a style="margin-left: 5px;" th:href="@{/user/toregister}">注册</a>
+                        </th:unless>
+
 					</p>
 					<div style="margin-top:0px;margin-left: 10px;" class="fl">
 						<a href="#" >
-							<img style="height: 30px;" th:src="@{images/个人中心.png}" />
+							<img style="height: 30px;" th:src="@{/images/个人中心.png}" />
 						</a>
 						<a  href="#">
-							<img style="height: 30px;" th:src="@{images/二维码.png}" />
+							<img style="height: 30px;" th:src="@{/images/二维码.png}" />
 						</a>
 						<a href="#">
-							<img style="height: 30px;" th:src="@{images/购物车.png}" />
+							<img style="height: 30px;" th:src="@{/images/购物车.png}" />
 						</a>
 					</div>
 					

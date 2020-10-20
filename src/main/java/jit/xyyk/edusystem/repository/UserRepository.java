@@ -4,6 +4,8 @@ import jit.xyyk.edusystem.bean.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Mapper
 public interface UserRepository {
     /**
@@ -21,5 +23,12 @@ public interface UserRepository {
      */
     public User getUserByEmail(String user_email);
 
+
+    /**
+     * 用户登录
+     * @param user
+     * @return
+     */
+    public List<User> login(User user);
 
 }
