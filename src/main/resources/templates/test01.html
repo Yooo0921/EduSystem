@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>XYYK教育网站</title>
+    <link href="http://vjs.zencdn.net/5.0.2/video-js.css" rel="stylesheet">
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	
+	
+	<link rel="stylesheet" type="text/css" th:href="@{/css/index.css}"/>
+	
+	
+    <style >
+        .navbar-center{
+            text-align: center;
+        }
+    </style>
+	<style type="text/css">
+		#thelogo{
+			margin-top: 0px;
+			padding-top: 0px;
+			height: 50px;
+			width: 80px;
+		}
+	</style>
+</head>
+
+<body style="padding-top: 70px; min-width: 700px">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="background-color: #62B1F9; height: 70px;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#top-navbar-collapse">
+                    <span class="sr-only">切换导航</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">
+					<img id="thelogo" th:src="@{/images/thelogo.png}" height="50px" />
+				</a>
+				
+				
+				
+				
+				
+            </div>
+            <div class="collapse navbar-collapse" id="top-navbar-collapse">
+                <form class="navbar-form navbar-center" role="search" method="get" action="#">
+                    <div class="form-group" style="width: 40%">
+                        <input type="text" name="search" class="form-control" placeholder="搜索" style="border-radius: 20px; display: inline; width: 95%">
+                        <button type="submit" style="margin-left: -45px; border: 0; background-color: white;">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </div>
+                </form>
+				
+				<!-- ------------登陆部分------------ -->
+				<div class="top_content_right">
+					<p class="p1">
+                        <!--TODO-->
+                        <a th:if="${session.user==null}" style="border-right: 1px solid;padding-right: 10px;" th:href="@{/user/tologin}" id="login">登陆</a>
+                        <a th:if="${session.user==null}" style="margin-left: 5px;" th:href="@{/user/toregister}">注册</a>
+
+                        <a th:if="${session.user!=null}" style="border-right: 1px solid;padding-right: 10px;">[[${session.user.getUser_email()}]]</a>
+                        <a th:if="${session.user!=null}" style="margin-left: 5px;" th:href="@{/user/toregister}">注销</a>
+
+
+                    </p>
+					<div style="margin-top:0px;margin-left: 10px;" class="fl">
+						<a href="#" >
+							<img style="height: 30px;" th:src="@{/images/个人中心.png}" />
+						</a>
+						<a  href="#">
+							<img style="height: 30px;" th:src="@{/images/二维码.png}" />
+						</a>
+						<a href="#">
+							<img style="height: 30px;" th:src="@{/images/购物车.png}" />
+						</a>
+					</div>
+					
+					
+				</div>
+						
+				
+            </div>
+			
+			
+			
+        </div>
+    </nav>
+
+
+    <div class="row center-block" style="width: 90%">
+        <div class="col-xs-2">
+            <ul class="nav nav-pills nav-stacked">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#">SVN</a></li>
+              <li><a href="#">iOS</a></li>
+              <li><a href="#">VB.Net</a></li>
+              <li><a href="#">Java</a></li>
+              <li><a href="#">PHP</a></li>
+            </ul>
+        </div>
+        <div class="col-xs-10">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 id="section-1">第一部分</h2>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="thumbnail" style="padding: 0;">
+                        <a href="">
+                            <img src="http://www.runoob.com/wp-content/uploads/2014/06/kittens.jpg" alt="通用的占位符缩略图">
+                        </a>
+                        <div class="caption">
+                            <a href="#">图片链接</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="thumbnail" style="padding: 0;">
+                        <a href="">
+                            <img src="http://www.runoob.com/wp-content/uploads/2014/06/kittens.jpg" alt="通用的占位符缩略图">
+                        </a>
+                        <div class="caption">
+                            <a href="#">图片链接</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="thumbnail" style="padding: 0;">
+                        <a href="">
+                            <img src="http://www.runoob.com/wp-content/uploads/2014/06/kittens.jpg" alt="通用的占位符缩略图">
+                        </a>
+                        <div class="caption">
+                            <a href="#">图片链接</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="thumbnail" style="padding: 0;">
+                        <a href="">
+                            <img src="http://www.runoob.com/wp-content/uploads/2014/06/kittens.jpg" alt="通用的占位符缩略图">
+                        </a>
+                        <div class="caption">
+                            <a href="#">图片链接</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="thumbnail" style="padding: 0;">
+                        <a href="">
+                            <img src="http://www.runoob.com/wp-content/uploads/2014/06/kittens.jpg" alt="通用的占位符缩略图">
+                        </a>
+                        <div class="caption">
+                            <a href="#">图片链接</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="thumbnail" style="padding: 0;">
+                        <a href="">
+                            <img src="http://www.runoob.com/wp-content/uploads/2014/06/kittens.jpg" alt="通用的占位符缩略图">
+                        </a>
+                        <div class="caption">
+                            <a href="#">图片链接</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="thumbnail" style="padding: 0;">
+                        <a href="">
+                            <img src="http://www.runoob.com/wp-content/uploads/2014/06/kittens.jpg" alt="通用的占位符缩略图">
+                        </a>
+                        <div class="caption">
+                            <a href="#">图片链接</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="thumbnail" style="padding: 0;">
+                        <a href="">
+                            <img src="http://www.runoob.com/wp-content/uploads/2014/06/kittens.jpg" alt="通用的占位符缩略图">
+                        </a>
+                        <div class="caption">
+                            <a href="#">图片链接</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 id="section-2">第二部分</h2>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="thumbnail" style="padding: 0;">
+                        <a href="">
+                            <img src="http://www.runoob.com/wp-content/uploads/2014/06/kittens.jpg" alt="通用的占位符缩略图">
+                        </a>
+                        <div class="caption">
+                            <a href="#">图片链接</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="thumbnail" style="padding: 0;">
+                        <a href="">
+                            <img src="http://www.runoob.com/wp-content/uploads/2014/06/kittens.jpg" alt="通用的占位符缩略图">
+                        </a>
+                        <div class="caption">
+                            <a href="#">图片链接</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="thumbnail" style="padding: 0;">
+                        <a href="">
+                            <img src="http://www.runoob.com/wp-content/uploads/2014/06/kittens.jpg" alt="通用的占位符缩略图">
+                        </a>
+                        <div class="caption">
+                            <a href="#">图片链接</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="thumbnail" style="padding: 0;">
+                        <a href="">
+                            <img src="http://www.runoob.com/wp-content/uploads/2014/06/kittens.jpg" alt="通用的占位符缩略图">
+                        </a>
+                        <div class="caption">
+                            <a href="#">图片链接</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="thumbnail" style="padding: 0;">
+                        <a href="">
+                            <img src="http://www.runoob.com/wp-content/uploads/2014/06/kittens.jpg" alt="通用的占位符缩略图">
+                        </a>
+                        <div class="caption">
+                            <a href="#">图片链接</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="thumbnail" style="padding: 0;">
+                        <a href="">
+                            <img src="http://www.runoob.com/wp-content/uploads/2014/06/kittens.jpg" alt="通用的占位符缩略图">
+                        </a>
+                        <div class="caption">
+                            <a href="#">图片链接</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="thumbnail" style="padding: 0;">
+                        <a href="">
+                            <img src="http://www.runoob.com/wp-content/uploads/2014/06/kittens.jpg" alt="通用的占位符缩略图">
+                        </a>
+                        <div class="caption">
+                            <a href="#">图片链接</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="thumbnail" style="padding: 0;">
+                        <a href="">
+                            <img src="http://www.runoob.com/wp-content/uploads/2014/06/kittens.jpg" alt="通用的占位符缩略图">
+                        </a>
+                        <div class="caption">
+                            <a href="#">图片链接</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 id="section-3">第三部分</h2>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="thumbnail" style="padding: 0;">
+                        <a href="">
+                            <img src="http://www.runoob.com/wp-content/uploads/2014/06/kittens.jpg" alt="通用的占位符缩略图">
+                        </a>
+                        <div class="caption">
+                            <a href="#">图片链接</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="thumbnail" style="padding: 0;">
+                        <a href="">
+                            <img src="http://www.runoob.com/wp-content/uploads/2014/06/kittens.jpg" alt="通用的占位符缩略图">
+                        </a>
+                        <div class="caption">
+                            <a href="#">图片链接</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="thumbnail" style="padding: 0;">
+                        <a href="">
+                            <img src="http://www.runoob.com/wp-content/uploads/2014/06/kittens.jpg" alt="通用的占位符缩略图">
+                        </a>
+                        <div class="caption">
+                            <a href="#">图片链接</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="thumbnail" style="padding: 0;">
+                        <a href="">
+                            <img src="http://www.runoob.com/wp-content/uploads/2014/06/kittens.jpg" alt="通用的占位符缩略图">
+                        </a>
+                        <div class="caption">
+                            <a href="#">图片链接</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="thumbnail" style="padding: 0;">
+                        <a href="">
+                            <img src="http://www.runoob.com/wp-content/uploads/2014/06/kittens.jpg" alt="通用的占位符缩略图">
+                        </a>
+                        <div class="caption">
+                            <a href="#">图片链接</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="thumbnail" style="padding: 0;">
+                        <a href="">
+                            <img src="http://www.runoob.com/wp-content/uploads/2014/06/kittens.jpg" alt="通用的占位符缩略图">
+                        </a>
+                        <div class="caption">
+                            <a href="#">图片链接</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="thumbnail" style="padding: 0;">
+                        <a href="">
+                            <img src="http://www.runoob.com/wp-content/uploads/2014/06/kittens.jpg" alt="通用的占位符缩略图">
+                        </a>
+                        <div class="caption">
+                            <a href="#">图片链接</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="thumbnail" style="padding: 0;">
+                        <a href="">
+                            <img src="http://www.runoob.com/wp-content/uploads/2014/06/kittens.jpg" alt="通用的占位符缩略图">
+                        </a>
+                        <div class="caption">
+                            <a href="#">图片链接</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 id="section-4">第四部分</h2>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="thumbnail" style="padding: 0;">
+                        <a href="">
+                            <img src="http://www.runoob.com/wp-content/uploads/2014/06/kittens.jpg" alt="通用的占位符缩略图">
+                        </a>
+                        <div class="caption">
+                            <a href="#">图片链接</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="thumbnail" style="padding: 0;">
+                        <a href="">
+                            <img src="http://www.runoob.com/wp-content/uploads/2014/06/kittens.jpg" alt="通用的占位符缩略图">
+                        </a>
+                        <div class="caption">
+                            <a href="#">图片链接</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="thumbnail" style="padding: 0;">
+                        <a href="">
+                            <img src="http://www.runoob.com/wp-content/uploads/2014/06/kittens.jpg" alt="通用的占位符缩略图">
+                        </a>
+                        <div class="caption">
+                            <a href="#">图片链接</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="thumbnail" style="padding: 0;">
+                        <a href="">
+                            <img src="http://www.runoob.com/wp-content/uploads/2014/06/kittens.jpg" alt="通用的占位符缩略图">
+                        </a>
+                        <div class="caption">
+                            <a href="#">图片链接</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="thumbnail" style="padding: 0;">
+                        <a href="">
+                            <img src="http://www.runoob.com/wp-content/uploads/2014/06/kittens.jpg" alt="通用的占位符缩略图">
+                        </a>
+                        <div class="caption">
+                            <a href="#">图片链接</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="thumbnail" style="padding: 0;">
+                        <a href="">
+                            <img src="http://www.runoob.com/wp-content/uploads/2014/06/kittens.jpg" alt="通用的占位符缩略图">
+                        </a>
+                        <div class="caption">
+                            <a href="#">图片链接</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="thumbnail" style="padding: 0;">
+                        <a href="">
+                            <img src="http://www.runoob.com/wp-content/uploads/2014/06/kittens.jpg" alt="通用的占位符缩略图">
+                        </a>
+                        <div class="caption">
+                            <a href="#">图片链接</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="thumbnail" style="padding: 0;">
+                        <a href="">
+                            <img src="http://www.runoob.com/wp-content/uploads/2014/06/kittens.jpg" alt="通用的占位符缩略图">
+                        </a>
+                        <div class="caption">
+                            <a href="#">图片链接</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <video id="example_video_1" class="video-js vjs-default-skin" controls preload="none" width="640" height="264" poster="http://vjs.zencdn.net/v/oceans.png" data-setup="{}">
+    <source src="http://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
+    <source src="http://vjs.zencdn.net/v/oceans.webm" type="video/webm">
+    <source src="http://vjs.zencdn.net/v/oceans.ogv" type="video/ogg">
+
+    <p class="vjs-no-js">
+        To view this video please enable JavaScript, and consider upgrading to a web browser that 
+        <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video
+        </a>
+    </p>
+    </video> -->
+
+
+    <script src="http://vjs.zencdn.net/ie8/1.1.0/videojs-ie8.min.js"></script>
+    <script src="http://vjs.zencdn.net/5.0.2/video.js"></script>
+
+    <!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>

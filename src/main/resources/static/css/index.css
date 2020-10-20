@@ -87,3 +87,9 @@ a.atxt_style:hover{
 	opacity: 0.6;
 	filter: alpha(opacity = 60);
 }
+
+#video_pic{
+	width: 253px;
+	height: 178px;
+}
+

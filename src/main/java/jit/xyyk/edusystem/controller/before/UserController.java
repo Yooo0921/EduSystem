@@ -62,10 +62,5 @@ public class UserController {
         return "/before/index";
     }
 
-    //显示课程界面
-    @RequestMapping("/user/course")
-    public String showCourse(){
 
-        return "course";
-    }
 }

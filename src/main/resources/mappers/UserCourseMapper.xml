@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="jit.xyyk.edusystem.repository.before.UserCourseRepository">
+
+    <!--获取所有的Course-->
+    <select id="getAllCourses" resultType="Course">
+        SELECT course_id,course_name,course_detail,course_link,course_pic,coursetype_name FROM tb_course,tb_coursetype WHERE tb_coursetype.coursetype_id=tb_course.coursetype_id
+    </select>
+
+</mapper>
