@@ -38,7 +38,8 @@
                 </div>
             </div>
             <!--视频播放器-->
-            <video id="video" class="video-js"  style="display: none;width: 750px" data-setup="{}">
+            <!--class="video-js"-->
+            <video id="video"  controls  style="display: none;width: 750px" data-setup="{}">
                 <source th:src="${course.course_link}" type="video/mp4"></source>
                 <source src="myvideo.ogv" type="video/ogg"></source>
                 <source src="myvideo.webm" type="video/webm"></source>
@@ -53,56 +54,30 @@
                 function show() {
                     document.getElementById("panel").style.display = "none";
                     document.getElementById("video").style.display = "block";
+
+                    document.querySelector('video').load();
                 }
             </script>
         </div>
         <div class="col-xs-4">
             <div class="panel panel-default" style="border: 0;">
-                <div class="panel-body" style="border: 0;">
-                    <h3>相关</h3>
-                    <div class="row" th:each="course : ${courseList}">
-                        <div class="col-sm-5">
-                            <img th:src="${course.course_pic}" class="img-responsive">
-                        </div>
-                        <div class="col-sm-7">
-                            <p>[[${course.course_name}]]</p>
-                            <p>[[${course.coursetype_name}]]</p>
-                        </div>
-                        <hr>
-                    </div>
-                    <!--<hr>
 
-                    <div class="row">
-                        <div class="col-sm-5">
-                            <img src="http://image.uczzd.cn/7603316629990825406.jpg" class="img-responsive">
-                        </div>
-                        <div class="col-sm-7">
-                            <p>捷豹C-X17概念车量产，颜值远超宝马X6，转…</p>
-                        </div>
-                    </div>
-                    <hr>
+                   <div class="panel-body" style="border: 0;">
+                       <h3>相关</h3>
+                       <div class="row" th:each="course : ${courseList}">
+                           <a th:href="'/edusystem/user/coursedetail?course_id='+${course.course_id}">
+                           <div class="col-sm-5">
+                               <img th:src="${course.course_pic}" class="img-responsive">
+                           </div>
+                           <div class="col-sm-7">
+                               <p>[[${course.course_name}]]</p>
+                               <p>[[${course.coursetype_name}]]</p>
+                               <hr>
+                           </div>
+                           </a>
+                       </div>
+                   </div>
 
-                    <div class="row">
-                        <div class="col-sm-5">
-                            <img src="http://image.uczzd.cn/7603316629990825406.jpg" class="img-responsive">
-                        </div>
-                        <div class="col-sm-7">
-                            <p>捷豹C-X17概念车量产，颜值远超宝马X6，转…</p>
-                        </div>
-                    </div>
-                    <hr>
-
-                    <div class="row">
-                        <div class="col-sm-5">
-                            <img src="http://image.uczzd.cn/7603316629990825406.jpg" class="img-responsive">
-                        </div>
-                        <div class="col-sm-7">
-                            <p>捷豹C-X17概念车量产，颜值远超宝马X6，转…</p>
-                        </div>
-                    </div>
-                    <hr>-->
-
-                </div>
             </div>
         </div>
     </div>

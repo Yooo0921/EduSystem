@@ -28,11 +28,11 @@
         <!--</div>-->
         <div class="col-sm-6 col-md-3 " th:each="course : ${courseList}">
             <div class="thumbnail"  style="padding: 0;width: 254px">
-                <a th:href="'/edusystem/detail?course_id='+${course.course_id}">
+                <a th:href="'/edusystem/user/coursedetail?course_id='+${course.course_id}" target="_blank">
                     <img id="video_pic" th:src="${course.course_pic}" >
                 </a>
                 <div class="caption">
-                    <a th:href="'/edusystem/detail?course_id='+${course.course_id}">[[${course.course_name}]]</a>
+                    <a th:href="'/edusystem/user/coursedetail?course_id='+${course.course_id}" target="_blank">[[${course.course_name}]]</a>
                 </div>
             </div>
         </div>

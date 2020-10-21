@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -15,8 +16,8 @@ public class UserCourseController {
     private UserCourseService userCourseService;
 
     @RequestMapping("/user/coursedetail")
-    public String showCourseDetail(Model model){
-        int course_id = 1;
+    public String showCourseDetail(Model model,  HttpServletRequest request){
+        int course_id = Integer.parseInt(request.getParameter("course_id"));
         Course course = userCourseService.selCourse(course_id);
         List<Course> courseList = userCourseService.getOtherCourse(course_id);
         model.addAttribute("course" ,course);

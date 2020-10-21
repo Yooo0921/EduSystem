@@ -1,6 +1,8 @@
 package jit.xyyk.edusystem.serviceImpl.before;
 
+import jit.xyyk.edusystem.bean.CourseType;
 import jit.xyyk.edusystem.bean.User;
+import jit.xyyk.edusystem.repository.before.UserCourseRepository;
 import jit.xyyk.edusystem.repository.before.UserRepository;
 import jit.xyyk.edusystem.service.before.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private UserCourseRepository userCourseRepository;
 
 
     @Override
@@ -35,11 +40,14 @@ public class UserServiceImpl implements UserService {
     public String login(User user, Model model, HttpSession session) {
         User ruser = null;
         List<User> list = userRepository.login(user);
+        List<CourseType> courseTypeList  = userCourseRepository.getAllCourseType();
+
         if (list.size() > 0) {
             ruser = list.get(0);
         }
         if (ruser != null) {
             session.setAttribute("user", ruser);
+            session.setAttribute("courseTypeList",courseTypeList);
             return "/before/index";
         } else {
             model.addAttribute("msg", "用户名或密码错误！");

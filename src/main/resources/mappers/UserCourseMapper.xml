@@ -14,4 +14,9 @@
     <select id="selOtherCourse" resultType="Course" parameterType="int">
         SELECT course_id,course_name,course_detail,course_link,course_pic,coursetype_name FROM tb_course,tb_coursetype WHERE tb_coursetype.coursetype_id=tb_course.coursetype_id AND course_id !=#{arg0}
     </select>
+
+    <select id="getAllCourseType" resultType="Coursetype">
+        SELECT coursetype_id ,coursetype_name FROM tb_coursetype
+    </select>
+
 </mapper>
