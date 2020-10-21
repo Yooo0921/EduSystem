@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>用户收藏</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/public.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/proList.css}" />
+</head>
+<body style="padding-top: 70px; min-width: 700px">
+    <div th:replace="before/top::html" ></div>
+
+    <div class="table wrapper">
+    <div class="tr">
+        <div>视频ID</div>
+        <div>名称</div>
+        <div>介绍</div>
+        <div>类型</div>
+        <div>操作</div>
+    </div>
+
+        <!--//TODO-->
+    <div class="th" th:each="course : ${focus}">
+        <div class="pro clearfix">
+            <!--<label class="fl">-->
+                <!--<input type="checkbox"/>-->
+                <!--<span></span>-->
+            <!--</label>-->
+            <a class="fl" th:href="'/edusystem/user/coursedetail?course_id='+${course.course_id}" style="margin-left: 220px">
+                <dl class="clearfix">
+                    <dt class="fl"><img id="focus_pic" th:href="'/edusystem/user/coursedetail?course_id='+${course.course_id}" th:src="${course.course_pic}"></dt>
+
+                </dl>
+            </a>
+        </div>
+        <div class="price" style="text-align: center">[[${course.course_name}]]</div>
+        <div class="number" style="display:inherit">
+            <p class="num clearfix" style="text-align: center;width: 370px">
+                [[${course.course_detail}]]
+            </p>
+        </div>
+        <div class="price sAll" style="text-align: center">[[${course.coursetype_name}]]</div>
+        <div class="price" style="text-align: center"><a class="del" href="#">取消关注</a></div>
+    </div>
+    <div class="goOn">空空如也~<a href="index.html">去逛逛</a></div>
+    <div th:if="${focus.size()==0}" class="newGoOn">空空如也~<a th:href="@{/index}">去逛逛</a></div>
+
+
+</div>
+</body>
+</html>

@@ -5,6 +5,7 @@ import jit.xyyk.edusystem.service.before.UserCourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +17,7 @@ public class UserCourseController {
     private UserCourseService userCourseService;
 
     @RequestMapping("/user/coursedetail")
-    public String showCourseDetail(Model model,  HttpServletRequest request){
+    public String showCourseDetail(Model model, HttpServletRequest request){
         int course_id = Integer.parseInt(request.getParameter("course_id"));
         Course course = userCourseService.selCourse(course_id);
         List<Course> courseList = userCourseService.getOtherCourse(course_id);

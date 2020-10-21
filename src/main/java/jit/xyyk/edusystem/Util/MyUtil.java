@@ -14,6 +14,9 @@ public class MyUtil {
      */
     public static Integer getUserId(HttpSession session) {
         User user = (User) session.getAttribute("user");
+        if (user==null){
+            return 0;
+        }
         return user.getUser_id();
     }
 }

@@ -21,8 +21,8 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">
-                        <img id="thelogo" th:src="@{/images/thelogo.png}" height="50px" />
+                    <a class="navbar-brand" th:href="@{/index}">
+                        <img id="thelogo" th:href="@{/index}" th:src="@{/images/thelogo.png}" height="50px" />
                     </a>
 
 
@@ -48,7 +48,7 @@
                             <a th:if="${session.user==null}" style="margin-left: 5px;" th:href="@{/user/toregister}">注册</a>
 
                             <a th:if="${session.user!=null}" style="border-right: 1px solid;padding-right: 10px;">[[${session.user.getUser_email()}]]</a>
-                            <a th:if="${session.user!=null}" style="margin-left: 5px;" th:href="@{/user/toregister}">注销</a>
+                            <a th:if="${session.user!=null}" style="margin-left: 5px;" th:href="@{/user/logout}">注销</a>
 
 
                         </p>
@@ -56,12 +56,12 @@
                             <a href="#" >
                                 <img style="height: 30px;" th:src="@{/images/个人中心.png}" />
                             </a>
-                            <a  href="#">
-                                <img style="height: 30px;" th:src="@{/images/二维码.png}" />
+                            <a  th:href="@{/focus}" >
+                                <img style="height: 30px;" th:href="@{/focus}" th:src="@{/images/收藏.png}" />
                             </a>
-                            <a href="#">
-                                <img style="height: 30px;" th:src="@{/images/购物车.png}" />
-                            </a>
+                            <!--<a href="#">-->
+                                <!--<img style="height: 30px;" th:src="@{/images/购物车.png}" />-->
+                            <!--</a>-->
                         </div>
 
 

@@ -12,10 +12,10 @@ public class testController {
     @Autowired
     private CourseTypeService courseTypeService;
 
-    @RequestMapping("/index")
-    public String sayHello(){
-        return "before/index";
-    }
+//    @RequestMapping("/focus")
+//    public String sayHello(){
+//        return "before/focus";
+//    }
 
 
 }

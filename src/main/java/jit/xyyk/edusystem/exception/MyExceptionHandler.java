@@ -39,8 +39,9 @@ public class MyExceptionHandler implements HandlerExceptionResolver {
         } else if (arg3 instanceof UserLoginNoException) {
             arg0.setAttribute("user", new User());
             arg0.setAttribute("msg", "没有登录，请登录！");
+            model.put("user",new User());
+            model.put("msg","没有登录，请登录！");
             logger.error("日志全局拦截,跳转页面:{}", "/before/login");
-            //TODO 修改
             return new ModelAndView("/before/login", model);
         } else {
             //TODO 修改

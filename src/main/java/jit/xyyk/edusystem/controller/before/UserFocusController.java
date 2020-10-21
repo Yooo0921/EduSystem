@@ -2,7 +2,6 @@ package jit.xyyk.edusystem.controller.before;
 
 import jit.xyyk.edusystem.Util.MyUtil;
 import jit.xyyk.edusystem.bean.Course;
-import jit.xyyk.edusystem.service.before.UserCourseService;
 import jit.xyyk.edusystem.service.before.UserFocusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,26 +13,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-public class IndexController {
+public class UserFocusController extends UserBaseController{
 
     @Autowired
-    private UserCourseService courseService;
+    private UserFocusService focusService;
 
 
+    @RequestMapping("/focus")
+    public String focus(HttpSession session, Model model){
 
-    @RequestMapping("/index")
-    public String index(){
-        return "before/index";
+        List<Course> focus = focusService.getAllFocusByUserId(MyUtil.getUserId(session));
+        model.addAttribute("focus",focus);
+        return "before/focus";
+
     }
-
-    //显示课程界面
-    @RequestMapping("/user/course")
-    public String showCourse(Model model){
-        List<Course> courseList = courseService.getAllCourses();
-        model.addAttribute("courseList",courseList);
-        return "before/course";
-    }
-
-
-
 }
