@@ -2,6 +2,7 @@ package jit.xyyk.edusystem.controller.before;
 
 import jit.xyyk.edusystem.Util.MyUtil;
 import jit.xyyk.edusystem.bean.Course;
+import jit.xyyk.edusystem.bean.CourseType;
 import jit.xyyk.edusystem.service.before.UserCourseService;
 import jit.xyyk.edusystem.service.before.UserFocusService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,9 @@ public class IndexController {
 
 
     @RequestMapping("/index")
-    public String index(){
+    public String index(Model model){
+        List<CourseType> courseTypeList = courseService.getAllCourseType();
+        model.addAttribute("courseTypeList",courseTypeList);
         return "before/index";
     }
 
@@ -30,7 +33,10 @@ public class IndexController {
     @RequestMapping("/user/course")
     public String showCourse(Model model){
         List<Course> courseList = courseService.getAllCourses();
+
         model.addAttribute("courseList",courseList);
+
+
         return "before/course";
     }
 

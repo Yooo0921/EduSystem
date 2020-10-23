@@ -50,6 +50,7 @@
                 <a href="myvideo.webm">下载视频</a>
             </video>
             <button class="btn btn-block btn-success btn-lg" onclick="show()">播放<span class="glyphicon glyphicon-expand"></span></button>
+            <button class="btn btn-block btn-success btn-lg" style="background-color: darksalmon" onclick="">收藏<img th:src="@{/images/收藏.png}"  style="width: 15px;height: 15px;margin-bottom: 5px"></button>
             <script>
                 function show() {
                     document.getElementById("panel").style.display = "none";
@@ -67,7 +68,7 @@
                        <div class="row" th:each="course : ${courseList}">
                            <a th:href="'/edusystem/user/coursedetail?course_id='+${course.course_id}">
                            <div class="col-sm-5">
-                               <img th:src="${course.course_pic}" class="img-responsive">
+                               <img th:src="${course.course_pic}" class="img-responsive" style="width: 120px;height: 67px">
                            </div>
                            <div class="col-sm-7">
                                <p>[[${course.course_name}]]</p>
