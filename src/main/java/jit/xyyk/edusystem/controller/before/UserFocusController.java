@@ -27,4 +27,17 @@ public class UserFocusController extends UserBaseController{
         return "before/focus";
 
     }
+
+    @RequestMapping("/addFocus")
+    public String addFocus(int course_id, Model model, HttpSession session){
+        return focusService.focus(model, course_id, session);
+
+    }
+
+
+    @RequestMapping("/cancelFocus")
+    public String cancelFocus(HttpSession session, Model model, Integer course_id) {
+        return focusService.cancelFocus(session, model, course_id);
+    }
+
 }

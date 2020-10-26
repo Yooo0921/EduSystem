@@ -17,8 +17,7 @@ public class UserCourseController {
     private UserCourseService userCourseService;
 
     @RequestMapping("/user/coursedetail")
-    public String showCourseDetail(Model model, HttpServletRequest request){
-        int course_id = Integer.parseInt(request.getParameter("course_id"));
+    public String showCourseDetail(Model model, int course_id){
         Course course = userCourseService.selCourse(course_id);
         List<Course> courseList = userCourseService.getOtherCourse(course_id);
         model.addAttribute("course" ,course);

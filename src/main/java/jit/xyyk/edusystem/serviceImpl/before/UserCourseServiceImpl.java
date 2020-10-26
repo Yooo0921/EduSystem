@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -29,6 +30,7 @@ public class UserCourseServiceImpl implements UserCourseService {
     @Override
     public List<Course> getOtherCourse(int course_id) {
         List<Course> courseList = userCourseRepository.selOtherCourse(course_id);
+        Collections.shuffle(courseList);
         if (courseList.size()<=4){
             return courseList;
         }else {

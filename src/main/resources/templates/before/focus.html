@@ -40,7 +40,7 @@
             </p>
         </div>
         <div class="price sAll" style="text-align: center">[[${course.coursetype_name}]]</div>
-        <div class="price" style="text-align: center"><a class="del" href="#">取消关注</a></div>
+        <div class="price" style="text-align: center"><a class="del" th:onclick="ensureCancel('[[${course.course_id}]]')">取消关注</a></div>
     </div>
     <div class="goOn">空空如也~<a href="index.html">去逛逛</a></div>
     <div th:if="${focus.size()==0}" class="newGoOn">空空如也~<a th:href="@{/index}">去逛逛</a></div>
@@ -48,4 +48,20 @@
 
 </div>
 </body>
+
+<script type="text/javascript">
+
+
+    function ensureCancel(course_id) {
+        var con;
+        con = confirm("确定取消关注该视频吗?")
+        if (con == true) {
+            window.location.href = "/edusystem/cancelFocus?course_id=" + course_id;
+        } else {
+            return false;
+        }
+
+    }
+
+</script>
 </html>

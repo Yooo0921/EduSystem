@@ -8,4 +8,17 @@
         where ft.course_id = ct.course_id and ft.user_id = #{arg0} and ct.coursetype_id = tt.coursetype_id
     </select>
 
+
+    <insert id="focus" parameterType="map">
+        insert into tb_focus(focus_id, course_id, user_id) values (null, #{cid}, #{uid})
+    </insert>
+
+    <select id="isFocus" parameterType="map" resultType="map">
+        select * from tb_focus where course_id=#{cid} and user_id=#{uid}
+    </select>
+
+    <delete id="cancelFocus" parameterType="map" >
+        delete from tb_focus where user_id=#{user_id} and course_id=#{course_id}
+    </delete>
+
 </mapper>
