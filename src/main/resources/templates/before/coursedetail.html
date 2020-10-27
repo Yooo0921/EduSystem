@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
     <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}"/>
+    <script th:src="@{/js/jquery-1.8.3.js}"></script>
 </head>
 <body style="padding-top: 70px; min-width: 700px">
 <div th:replace="before/top::html" ></div>
@@ -49,6 +50,7 @@
                 </object> 当前浏览器不支持 video直接播放，点击这里下载视频：
                 <a href="myvideo.webm">下载视频</a>
             </video>
+
             <button class="btn btn-block btn-success btn-lg" onclick="show()">播放<span class="glyphicon glyphicon-expand"></span></button>
             <button class="btn btn-block btn-success btn-lg" style="background-color: darksalmon" th:onclick="gofocus('[[${course.course_id}]]')">
                 收藏
@@ -56,12 +58,29 @@
             </button>
             <p th:text="${msg}"></p>
 
+
+
             <script>
                 function show() {
+
                     document.getElementById("panel").style.display = "none";
                     document.getElementById("video").style.display = "block";
 
                     document.querySelector('video').load();
+                    $.ajax({
+                        url: "/edusystem/addHistory",
+                        type: "get",
+                        data:{"course_id": [[${course.course_id}]] },
+                        dataType: "json",
+
+                    });
+
+                    /*$.ajax({
+                        url: "/edusystem/admin/delcourse",
+                        type: "post",
+                        data:{"course_id":data.course_id},
+                        dataType: "json",
+                    });*/
                 }
             </script>
         </div>
