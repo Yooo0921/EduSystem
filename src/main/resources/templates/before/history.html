@@ -15,8 +15,8 @@
         <div>课程图片</div>
         <div>课程名称</div>
         <div>上次浏览时间</div>
-        <div>类型</div>
-        <div>操作</div>
+        <!--<div>类型</div>
+        <div>操作</div>-->
     </div>
 
         <!--//TODO-->
@@ -33,17 +33,17 @@
                 </dl>
             </a>-->
             <a class="f1" th:href="'/edusystem/user/coursedetail?course_id='+${history.course_id}" style="margin-left: 220px">
-                <img th:src="${history.course_pic}">
+                <img style="width: 280px;height: 145px;margin-left: 110px" th:src="${history.course_pic}">
             </a>
         </div>
         <div class="price" style="text-align: center">[[${history.course_name}]]</div>
         <div class="number" style="display:inherit">
-            <p class="num clearfix" style="text-align: center;width: 370px">
+            <p class="num clearfix" style="text-align: center;width: 100%">
                 [[${history.historytime}]]
             </p>
         </div>
         <!--<div class="price sAll" style="text-align: center"></div>-->
-        <div class="price" style="text-align: center"><a class="del" href="#">取消关注</a></div>
+        <!--<div class="price" style="text-align: center"><a class="del" href="#">取消关注</a></div>-->
     </div>
     <div class="goOn">空空如也~<a href="index.html">去逛逛</a></div>
     <div th:if="${historyList.size()==0}" class="newGoOn">空空如也~<a th:href="@{/index}">去逛逛</a></div>

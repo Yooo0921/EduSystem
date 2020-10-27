@@ -18,7 +18,7 @@ import java.util.List;
 
 
 @Controller
-public class UserHistoryController {
+public class UserHistoryController extends UserBaseController{
     @Autowired
     private UserHistoryService userHistoryService;
 
@@ -29,11 +29,16 @@ public class UserHistoryController {
     public void addHistory(String course_id, HttpSession session){
         /*int course_id = Integer.parseInt(request.getParameter("course_id"));*/
         logger.info("course_id:{}",course_id);
-
+        int courseId = Integer.parseInt(course_id);
         User user = (User) session.getAttribute("user");
         logger.info("user:{}",user);
         if(user!=null){
-            userHistoryService.addHistory(user.getUser_id(),Integer.parseInt(course_id));
+            int user_id = user.getUser_id();
+            if (userHistoryService.selectHistory(user_id ,courseId)>0){
+                userHistoryService.updateHistory(user_id,courseId);
+            }else {
+                userHistoryService.addHistory(user_id,courseId);
+            }
         }
 
     }
