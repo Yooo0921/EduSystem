@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="jit.xyyk.edusystem.repository.before.UserHistoryRepository">
+
+    <insert id="insertHistory" parameterType="History">
+        insert into tb_history (course_id,user_id,historytime) values (#{course_id},#{user_id},#{historytime})
+    </insert>
+
+    <select id="showHistory" resultType="History" parameterType="int">
+        SELECT tb_history.course_id,course_pic,course_name,historytime FROM tb_history,tb_course WHERE user_id=#{arg0} and tb_history.course_id=tb_course.course_id
+    </select>
+
+</mapper>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>用户收藏</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/public.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/proList.css}" />
+</head>
+<body style="padding-top: 70px; min-width: 700px">
+    <div th:replace="before/top::html" ></div>
+
+    <div class="table wrapper">
+    <div class="tr">
+        <div>课程图片</div>
+        <div>课程名称</div>
+        <div>上次浏览时间</div>
+        <div>类型</div>
+        <div>操作</div>
+    </div>
+
+        <!--//TODO-->
+    <div class="th" th:each="history : ${historyList}">
+        <div class="pro clearfix">
+            <!--<label class="fl">-->
+                <!--<input type="checkbox"/>-->
+                <!--<span></span>-->
+            <!--</label>-->
+            <!--<a class="fl" th:href="'/edusystem/user/coursedetail?course_id='+${course.course_id}" style="margin-left: 220px">
+                <dl class="clearfix">
+                    <dt class="fl"><img id="focus_pic" th:href="'/edusystem/user/coursedetail?course_id='+${course.course_id}" th:src="${course.course_pic}"></dt>
+
+                </dl>
+            </a>-->
+            <a class="f1" th:href="'/edusystem/user/coursedetail?course_id='+${history.course_id}" style="margin-left: 220px">
+                <img th:src="${history.course_pic}">
+            </a>
+        </div>
+        <div class="price" style="text-align: center">[[${history.course_name}]]</div>
+        <div class="number" style="display:inherit">
+            <p class="num clearfix" style="text-align: center;width: 370px">
+                [[${history.historytime}]]
+            </p>
+        </div>
+        <!--<div class="price sAll" style="text-align: center"></div>-->
+        <div class="price" style="text-align: center"><a class="del" href="#">取消关注</a></div>
+    </div>
+    <div class="goOn">空空如也~<a href="index.html">去逛逛</a></div>
+    <div th:if="${historyList.size()==0}" class="newGoOn">空空如也~<a th:href="@{/index}">去逛逛</a></div>
+
+
+</div>
+</body>
+</html>
