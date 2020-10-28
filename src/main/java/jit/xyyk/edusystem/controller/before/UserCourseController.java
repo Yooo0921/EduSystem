@@ -24,4 +24,18 @@ public class UserCourseController {
         model.addAttribute("courseList",courseList);
         return "before/coursedetail";
     }
+
+    @RequestMapping("/getAllCourseByType")
+    public String getAllCourseByType(Model model,int coursetype_id){
+        List<Course> courseList = userCourseService.getAllCourseByType(coursetype_id);
+        if (courseList.size()==0){
+            model.addAttribute("courseList",courseList);
+            model.addAttribute("msg","");
+            return "before/course";
+
+        }
+        model.addAttribute("courseList", courseList);
+        model.addAttribute("msg",courseList.get(0).getCoursetype_name());
+        return "before/course";
+    }
 }

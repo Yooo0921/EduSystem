@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -47,6 +48,7 @@ public class UserHistoryController extends UserBaseController{
     public String showHistory(HttpSession session, Model model){
         User user = (User)session.getAttribute("user");
         List<History> historyList = userHistoryService.showHistory(user.getUser_id());
+        Collections.reverse(historyList);
         model.addAttribute("historyList",historyList);
         return "before/history";
     }

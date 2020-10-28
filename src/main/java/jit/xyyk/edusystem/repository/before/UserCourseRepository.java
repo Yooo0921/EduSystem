@@ -28,4 +28,12 @@ public interface UserCourseRepository {
      * 根据课程ID 查找除此之外的课程 并显示在相关列表中
      */
     public List<CourseType>  getAllCourseType();
+
+
+    /**
+     * 通过类型ID 查找所有该类型课程
+     * @param coursetype_id
+     * @return
+     */
+    public List<Course> getAllCourseByType(int coursetype_id);
 }

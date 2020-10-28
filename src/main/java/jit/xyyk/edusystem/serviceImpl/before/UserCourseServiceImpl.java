@@ -46,5 +46,10 @@ public class UserCourseServiceImpl implements UserCourseService {
         return userCourseRepository.getAllCourseType();
     }
 
+    @Override
+    public List<Course> getAllCourseByType(int coursetype_id) {
+        return userCourseRepository.getAllCourseByType(coursetype_id);
+    }
+
 
 }

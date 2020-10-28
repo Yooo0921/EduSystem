@@ -14,4 +14,6 @@ public interface UserCourseService {
     public List<Course> getOtherCourse(int course_id);
 
     public List<CourseType> getAllCourseType();
+
+    public List<Course> getAllCourseByType(int coursetype_id);
 }

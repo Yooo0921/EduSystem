@@ -35,6 +35,7 @@ public class IndexController {
         List<Course> courseList = courseService.getAllCourses();
 
         model.addAttribute("courseList",courseList);
+        model.addAttribute("msg","全部视频");
 
 
         return "before/course";

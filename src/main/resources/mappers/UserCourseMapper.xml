@@ -12,11 +12,15 @@
     </select>
 
     <select id="selOtherCourse" resultType="Course" parameterType="int">
-        SELECT course_id,course_name,course_detail,course_link,course_pic,coursetype_name FROM tb_course,tb_coursetype WHERE tb_coursetype.coursetype_id=tb_course.coursetype_id AND course_id !=#{arg0}
+      select tb_course.*, tb_coursetype.COURSETYPE_NAME from tb_course,tb_coursetype WHERE tb_coursetype.COURSETYPE_ID = tb_course.COURSETYPE_ID and tb_coursetype.COURSETYPE_ID=(SELECT COURSETYPE_ID from tb_course WHERE COURSE_ID = #{arg0});
     </select>
 
     <select id="getAllCourseType" resultType="Coursetype">
-        SELECT coursetype_id ,coursetype_name FROM tb_coursetype
+        SELECT coursetype_id ,coursetype_name FROM tb_coursetype where coursetype_status = '1'
+    </select>
+
+    <select id="getAllCourseByType" resultType="Course" parameterType="int">
+        SELECT * from tb_course, tb_coursetype where tb_course.coursetype_id = tb_coursetype.coursetype_id and tb_coursetype.coursetype_id = #{arg0}
     </select>
 
 </mapper>

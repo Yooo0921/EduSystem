@@ -8,8 +8,10 @@
 	
 	
 	<link rel="stylesheet" type="text/css" th:href="@{/css/index.css}"/>
-	
-	
+    <script th:src="@{/js/jquery-1.8.3.js}"></script>
+
+
+
     <style >
         .navbar-center{
             text-align: center;
@@ -34,13 +36,13 @@
             <ul class="nav nav-pills nav-stacked">
                 <li class="active"><a href="#">主页</a></li>
                 <ul class="nav nav-pills nav-stacked" th:each="coursetype : ${courseTypeList}">
-                    <li><a href="#">[[${coursetype.coursetype_name}]]</a></li>
+                    <li><a class="title1" th:href="'/edusystem/getAllCourseByType?coursetype_id='+${coursetype.coursetype_id}">[[${coursetype.coursetype_name}]]</a></li>
                 </ul>
 
             </ul>
         </div>
         <div class="col-xs-10">
-        <iframe id="iframeMain" th:src="@{/user/course}" style=" width: 100%;border: 0px" onload="iFrameHeight()" scrolling="no" > </iframe>
+            <iframe id="iframeMain" th:src="@{/user/course}" style=" width: 100%;border: 0px" onload="iFrameHeight()" scrolling="no" > </iframe>
         </div>
     </div>
 
@@ -54,6 +56,13 @@
                     ifm.height = subWeb.body.scrollHeight;
                 }
             }
+
+            $(document).ready(function(){
+                $("a.title1").click(function (e) {
+                    e.preventDefault();
+                    $("#iframeMain").attr("src",$(this).attr("href"));
+                });
+            });
     </script>
 
 
