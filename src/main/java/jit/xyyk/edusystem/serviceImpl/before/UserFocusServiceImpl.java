@@ -37,11 +37,11 @@ public class UserFocusServiceImpl implements UserFocusService {
         map.put("cid", id);
         List<Map<String, Object>> list = userFocusRepository.isFocus(map);
         if (list.size() > 0) {
-            model.addAttribute("msg", "已关注该商品！");
+            model.addAttribute("msg", "已关注该课程！");
         } else {
             int n = userFocusRepository.focus(map);
             if (n > 0)
-                model.addAttribute("msg", "成功关注该商品！");
+                model.addAttribute("msg", "成功关注该课程！");
             else
                 model.addAttribute("msg", "关注失败！");
         }

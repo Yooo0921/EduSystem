@@ -36,9 +36,11 @@ public class AdminCourseController {
 
     //添加课程的表单提交 获取课程信息 保存到数据库
     @RequestMapping(value = "/admin/savecourse")
-    public String saveCourse(@ModelAttribute(value = "course") Course course){
+    public String saveCourse(@ModelAttribute(value = "course") Course course, Model model){
         if (courseService.addCourse(course)>0){
 
+            List<CourseType> courseTypes = courseService.selectCourseType();
+            model.addAttribute("courseTypes", courseTypes);
             return "admin/course";
         }else {
             return "admin/addcourse";
@@ -49,8 +51,10 @@ public class AdminCourseController {
 
     //修改课程
     @RequestMapping(value = "/admin/updatecourse")
-    public String updateCourse(@ModelAttribute(value = "course") Course course){
+    public String updateCourse(@ModelAttribute(value = "course") Course course, Model model){
 
+        List<CourseType> courseTypes = courseService.selectCourseType();
+        model.addAttribute("courseTypes", courseTypes);
         courseService.updateCourse(course);
         return "admin/course";
 

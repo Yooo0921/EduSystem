@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>视频详情</title>
     <link href="http://vjs.zencdn.net/5.0.2/video-js.css" rel="stylesheet">
     <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -53,7 +53,7 @@
 
             <button class="btn btn-block btn-success btn-lg" onclick="show()">播放<span class="glyphicon glyphicon-expand"></span></button>
             <button class="btn btn-block btn-success btn-lg" style="background-color: darksalmon" th:onclick="gofocus('[[${course.course_id}]]')">
-                收藏
+                关注
                 <img th:src="@{/images/收藏.png}"  style="width: 15px;height: 15px;margin-bottom: 5px"/>
             </button>
             <p th:text="${msg}"></p>

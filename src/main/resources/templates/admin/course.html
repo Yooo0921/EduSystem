@@ -19,7 +19,7 @@
 </script>
 
 <table id="demo" lay-filter="LAY-table-test"></table>
-    这是课程管理界面
+
 <!--隐藏的预览视频的div-->
 <div id="showVedio" style="display: none">
     <video id="showV" controls="controls" width="640px" height="480px">
@@ -105,7 +105,7 @@
         //table实例化
         table.render({
             elem: '#demo'
-            ,height: 1000
+            ,height: 900
             ,url: '/edusystem/admin/showcourse' //数据接口
             ,page: true//是否分页
             ,title:"课程管理表"
@@ -306,7 +306,7 @@
                     return layer.msg(res.message);
                 }
                 if(res.error==0){
-                    alert("res.url:"+res.url);
+
                     $("#course_link").val(res.url);
                     $("#showV").attr("src",res.url);
                     $("#demo9").attr("src",res.url);
@@ -377,7 +377,7 @@
             return false;
         }
 
-        return false;
+        return true;
 
     }
 </script>
